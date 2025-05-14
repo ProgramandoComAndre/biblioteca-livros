@@ -1,4 +1,4 @@
-module.exports = function registarUtilizadorUseCase(userRepository) {
+module.exports = function registarUtilizadorUseCase({userRepository}) {
     return async function ({nomeCompleto, NIF, telefone, morada, email}) {
         await userRepository.register({
             nomeCompleto,

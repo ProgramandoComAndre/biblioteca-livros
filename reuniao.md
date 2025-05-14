@@ -33,4 +33,7 @@
 
 [] Mostrar todos os emprestimos pendentes, com o nome do livro, nome de utilizador, CPF, data de saída e data de retorno, Ordenados pela data de retorno mais antiga.
 
-## Estruturas 
+## Estruturas
+
+* UserRepository
+[] register: {nomeCompleto, NIF, telefone, morada, email}=> Promise <void>

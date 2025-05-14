@@ -10,7 +10,7 @@
 
 ## Use Cases
 
-[] Registar novo utilizador
+[X] Registar novo utilizador
 [] - CPF ou email devem ser únicos
 
 [] Procurar um cadastro por CPF

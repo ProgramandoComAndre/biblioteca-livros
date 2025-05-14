@@ -6,6 +6,7 @@ describe('Registar utilizador', function () {
     register: jest.fn(),
   };
   test('Deve registar um utilizador', async function () {
+    // Arrange
     const utilizadorDTO = {
       nomeCompleto: 'nome valido',
       NIF: 'NIF Valido',
@@ -14,9 +15,12 @@ describe('Registar utilizador', function () {
       email: 'email valido',
     };
 
+    // Act
     const sut = registarUtilizadorUsecase({ userRepository });
     const output = await sut(utilizadorDTO);
 
+
+    //Assert
     expect(output).toBeUndefined();
     expect(userRepository.register).toHaveBeenCalledWith(utilizadorDTO);
     expect(userRepository.register).toHaveBeenCalledTimes(1);
@@ -25,4 +29,9 @@ describe('Registar utilizador', function () {
   test("Deve retornar um throw AppError se o repositorio nao for fornecido", function () {
       expect(() => registarUtilizadorUsecase({})).toThrow(AppError.dependencies);
   })
+
+  test("Deve retornar um throw AppError se os campos obrigatórios não forem fornecidos", async function () {
+    const sut = registarUtilizadorUsecase({ userRepository });
+    await expect(() => sut({})).rejects.toThrow(AppError.missingParams);
+})
 });

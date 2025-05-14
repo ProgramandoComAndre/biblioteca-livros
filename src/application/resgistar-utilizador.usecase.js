@@ -7,9 +7,9 @@ module.exports = function registarUtilizadorUseCase({ userRepository }) {
     const checaCampos = nomeCompleto && NIF && telefone && morada && email;
     if(!checaCampos) throw new AppError(AppError.missingParams);
     const checaSeExisteUtilizadorComNif = await userRepository.existNIF(NIF);
-    if(checaSeExisteUtilizadorComNif) return Either.left(Either.valorJaRegistado(NIF));
+    if(checaSeExisteUtilizadorComNif) return Either.left(Either.valorJaRegistado("NIF"));
     const checaSeEmailExiste = await userRepository.existEmail(email);
-    if(checaSeEmailExiste) return Either.left(Either.valorJaRegistado(email));
+    if(checaSeEmailExiste) return Either.left(Either.valorJaRegistado("Email"));
     await userRepository.register({
       nomeCompleto,
       NIF,

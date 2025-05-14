@@ -11,7 +11,7 @@
 ## Use Cases
 
 [X] Registar novo utilizador
-[] - CPF ou email devem ser únicos
+[X] - CPF ou email devem ser únicos
 
 [] Procurar um cadastro por CPF
 [] - Devolve utilizador ou vazio
@@ -37,3 +37,5 @@
 
 * UserRepository
 [] register: {nomeCompleto, NIF, telefone, morada, email}=> Promise <void>
+[] existNIF(NIF) => Promise<boolean>
+[] existEmail(email) => Promise<boolean>

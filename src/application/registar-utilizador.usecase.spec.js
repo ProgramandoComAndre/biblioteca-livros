@@ -40,7 +40,7 @@ describe('Registar utilizador', function () {
     
   });
 
-  test('Deve retornar um throw AppError se o NIF ja existir', async function () {
+  test('Deve retornar um Either.left se o NIF ja existir', async function () {
     userRepository.existNIF.mockResolvedValue(true);  
     const utilizadorDTO = {
         nomeCompleto: 'nome valido',
@@ -53,12 +53,12 @@ describe('Registar utilizador', function () {
       const sut = registarUtilizadorUsecase({ userRepository });
       const output = await sut(utilizadorDTO)
       expect(output.right).toBe(null);
-      expect(output.left).toEqual(Either.valorJaRegistado(utilizadorDTO.NIF));
+      expect(output.left).toEqual(Either.valorJaRegistado("NIF"));
       expect(userRepository.existNIF).toHaveBeenCalledWith(utilizadorDTO.NIF);
       expect(userRepository.existNIF).toHaveBeenCalledTimes(1);
     });
 
-    test('Deve retornar um throw AppError se o NIF ja existir', async function () {
+    test('Deve retornar um Either.left se o Email ja existir', async function () {
         userRepository.existNIF.mockResolvedValue(false);
         userRepository.existEmail.mockResolvedValue(true);  
     const utilizadorDTO = {
@@ -72,7 +72,7 @@ describe('Registar utilizador', function () {
       const sut = registarUtilizadorUsecase({ userRepository });
       const output = await sut(utilizadorDTO)
       expect(output.right).toBe(null);
-      expect(output.left).toEqual(Either.valorJaRegistado(utilizadorDTO.email));
+      expect(output.left).toEqual(Either.valorJaRegistado("Email"));
       expect(userRepository.existEmail).toHaveBeenCalledWith(utilizadorDTO.email);
       expect(userRepository.existEmail).toHaveBeenCalledTimes(1);
     });

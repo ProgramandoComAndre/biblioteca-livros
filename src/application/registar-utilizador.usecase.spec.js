@@ -1,3 +1,4 @@
+const AppError = require('../shared/errors/AppError');
 const registarUtilizadorUsecase = require('./resgistar-utilizador.usecase');
 
 describe('Registar utilizador', function () {
@@ -22,6 +23,6 @@ describe('Registar utilizador', function () {
   });
 
   test("Deve retornar um throw AppError se o repositorio nao for fornecido", function () {
-      expect(() => registarUtilizadorUsecase({})).toThrow("O UserRepository nao foi fornecido");
+      expect(() => registarUtilizadorUsecase({})).toThrow(AppError.dependencies);
   })
 });

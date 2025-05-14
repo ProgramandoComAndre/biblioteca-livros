@@ -20,4 +20,8 @@ describe('Registar utilizador', function () {
     expect(userRepository.register).toHaveBeenCalledWith(utilizadorDTO);
     expect(userRepository.register).toHaveBeenCalledTimes(1);
   });
+
+  test("Deve retornar um throw AppError se o repositorio nao for fornecido", function () {
+      expect(() => registarUtilizadorUsecase({})).toThrow("O UserRepository nao foi fornecido");
+  })
 });

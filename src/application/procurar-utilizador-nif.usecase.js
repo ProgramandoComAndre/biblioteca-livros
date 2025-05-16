@@ -1,5 +1,4 @@
-const { Either } = require("../shared/errors");
-
+const { Either, AppError } = require("../shared/errors");
 module.exports = function procurarUtilizadorPorNif ({ userRepository }) {
     if (!userRepository) throw new AppError(AppError.dependencies);
     return async function ({nif}) {

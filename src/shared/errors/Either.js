@@ -18,4 +18,12 @@ module.exports = class Either {
     static valorJaRegistado(valor) {
         return { message: `${valor} ja registado` }
     }
+
+    static dataRetornoMenorQueDataSaida() {
+        return { message: "Data de retorno menor que data de saida" }
+    }
+
+    static livroJaEmprestadoPendenteUtilizador() {
+        return { message: "Livro ja emprestado pendente de utilizador" }
+    }
 }
